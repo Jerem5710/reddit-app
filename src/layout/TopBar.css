@@ -1,0 +1,9 @@
+/* src/layout/TopBar.css */
+.topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: var(--background, #ffffff);
+    border-bottom: 1px solid #ccc;
+}
