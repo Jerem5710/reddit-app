@@ -1,11 +1,19 @@
 import React from 'react';
 import './TopBar.css'; // Assuming you have a CSS file for styling
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const TopBar = () => {
     const [query, setQuery] = useState('');
+    const [subreddit, setSubreddit] = useState('popular'); // Default subreddit
+    // You can later use this state to handle subreddit changes
     const navigate = useNavigate();
+
+    // Debugging effect to log the selected subreddit
+    // This can be useful to see if the subreddit changes correctly
+    useEffect(() => {
+        console.log('Selected subreddit:', subreddit);
+    }, [subreddit]);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -27,10 +35,15 @@ const TopBar = () => {
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={handleSearch}
                 />
-                <select className="subreddit-select">
+                <select className="subreddit-select"
+                    value={subreddit}
+                    onChange={(e) => setSubreddit(e.target.value)}
+                >
                     <option value="popular">r/popular</option>
                     <option value="reactjs">r/reactjs</option>
-                    {/* later: map subreddit options dynamically */}
+                    <option value="webdev">r/webdev</option>
+                    <option value="learnprogramming">r/learnprogramming</option>
+                    {/* More can be added later */}
                 </select>
                 <button className="dark-toggle">🌙</button>
             </div>
