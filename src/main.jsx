@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { store } from './app/store.js'
 import React from 'react'
 import ReactDom from 'react-dom/client'
+import './styles/theme.css' // Assuming you have a global theme CSS file
 
 ReactDom.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

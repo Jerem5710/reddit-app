@@ -11,3 +11,10 @@
     border-radius: 6px;
     background-color: var(--post-bg-color, #f9f9f9);
 }
+
+
+/* Add extra spacing to emphasize the separation */
+.post-card:not(:first-child) {
+    margin-top: 1.5rem;
+}
+

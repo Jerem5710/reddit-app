@@ -24,7 +24,8 @@ const postsSlice = createSlice({
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.posts = action.payload;
+          state.posts = action.payload;
+          console.log('Received posts:', action.payload.length);
       })
       .addCase(fetchPosts.rejected, (state, action) => {
         state.status = 'failed';

@@ -4,7 +4,17 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.dark {
-    background-color: #121212;
+body.dark .post-card{
+    background-color: #1f1f1f;
+}
+
+body.dark .post-card h3,
+body.dark .post-card p,
+body.dark .post-card a {
     color: #f0f0f0;
 }
+
+body.dark {
+    color: #f0f0f0;
+}
+

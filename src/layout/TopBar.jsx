@@ -2,20 +2,22 @@ import React from 'react';
 import './TopBar.css'; // Assuming you have a CSS file for styling
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSubreddit } from '../features/subreddit/subredditSlice'; // Assuming you have a subredditSlice defined
 
 const TopBar = () => {
     const [query, setQuery] = useState('');
-    const [subreddit, setSubreddit] = useState('popular'); // Default subreddit
-    // You can later use this state to handle subreddit changes
     const [isDarkMode, setIsDarkMode] = useState(false); // Placeholder for dark mode toggle
     // This can be expanded to actually toggle dark mode in your app
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const selectedSubreddit = useSelector((state) => state.subreddit.selectedSubreddit);
 
     // Debugging effect to log the selected subreddit
     // This can be useful to see if the subreddit changes correctly
     useEffect(() => {
-        console.log('Selected subreddit:', subreddit);
-    }, [subreddit]);
+        console.log('Selected subreddit (from Redux):', selectedSubreddit);
+    }, [selectedSubreddit]);
 
     useEffect(() => {
         // This effect can be used to apply dark mode styles globally
@@ -49,8 +51,8 @@ const TopBar = () => {
                 />
                 <select
                     className="subreddit-select"
-                    value={subreddit}
-                    onChange={(e) => setSubreddit(e.target.value)}
+                    value={selectedSubreddit}
+                    onChange={(e) => dispatch(setSubreddit(e.target.value))}
                 >
                     <option value="popular">r/popular</option>
                     <option value="reactjs">r/reactjs</option>

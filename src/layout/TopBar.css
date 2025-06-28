@@ -7,3 +7,14 @@
     background-color: var(--background, #ffffff);
     border-bottom: 1px solid #ccc;
 }
+
+.topbar .logo {
+    color: #222; /* light mode text color */
+
+}
+
+body.dark .topbar .logo {
+    color: #f0f0f0; /* dark mode text color */
+    
+}
+
