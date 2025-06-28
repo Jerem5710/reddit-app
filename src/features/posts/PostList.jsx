@@ -31,6 +31,13 @@ const PostList = () => {
             {posts.map((post) => (
                 <div key={post.id} className="post-card">
                     <h3>{post.title}</h3>
+                    {post.preview?.images?.[0]?.source?.url && (
+                        <img
+                            src={post.preview.images[0].source.url.replace(/&amp;/g, '&')}
+                            alt={post.title}
+                            className="post-thumbnail"
+                        />
+                    )}
                     <p>{post.subreddit_name_prefixed}</p>
                     <a href={`https://www.reddit.com${post.permalink}`} target="_blank" rel="noopener noreferrer">
                         View on Reddit
