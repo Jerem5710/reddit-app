@@ -39,8 +39,11 @@ const TopBar = () => {
 
     return (
         <header className="topbar">
-            <h1 className="logo">Reddit Client</h1>
-            
+            <div className="topbar-inner">
+            <div className="logo-section">
+                <img src="reddit-logo.svg" alt="Reddit Logo" className="reddit-logo" />
+                <h1 className="logo-text">Reddit Client</h1>
+            </div>          
             <div className="topbar-controls">
                 <input type="text"
                     placeholder="Search..."
@@ -66,6 +69,7 @@ const TopBar = () => {
                 >
                     {isDarkMode ? '🌞' : '🌙'}
                 </button>
+                </div>
             </div>
         </header>
     );

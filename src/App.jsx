@@ -9,6 +9,7 @@ import PostList from './features/posts/PostList.jsx'
 
 function App() {
   return (
+    <div className="app-wrapper">
     <Router>
       <TopBar />
       <Routes>
@@ -16,7 +17,8 @@ function App() {
         <Route path={ROUTES.search} element={<div>Search Results</div>} />
         <Route path={ROUTES.postDetail()} element={<div>Post Detail</div>} />
       </Routes>
-    </Router>
+      </Router>
+    </div>
   )
 }
 

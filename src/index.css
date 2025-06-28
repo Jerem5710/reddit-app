@@ -22,10 +22,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -63,4 +64,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.post-feed {
+  padding-top: 10rem;
 }

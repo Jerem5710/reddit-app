@@ -26,10 +26,11 @@ const PostList = () => {
 
     return (
         <div className="post-feed">
-            <h2>Posts from r/{selectedSubreddit}</h2>
-        <div className="post-list">
-            {posts.map((post) => (
-                <div key={post.id} className="post-card">
+            <div className="post-list">
+                <h2 className="subreddit-title">Posts from r/{selectedSubreddit}</h2>
+                {posts.map((post) => (
+                <React.Fragment key={post.id}>
+                <div className="post-card">
                     <h3>{post.title}</h3>
                     {/* Only show video if it's a Reddit-hosted video */}
                     {post.media?.reddit_video?.fallback_url ? (
@@ -59,7 +60,10 @@ const PostList = () => {
                     <a href={`https://www.reddit.com${post.permalink}`} target="_blank" rel="noopener noreferrer">
                         View on Reddit
                     </a>
-                </div>
+                        </div>
+                        {/*Themed divider between posts*/}
+                        <hr className="post-divider" />
+                    </React.Fragment>
             ))}
             </div>
         </div>
