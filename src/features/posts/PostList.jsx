@@ -31,14 +31,31 @@ const PostList = () => {
             {posts.map((post) => (
                 <div key={post.id} className="post-card">
                     <h3>{post.title}</h3>
-                    {post.preview?.images?.[0]?.source?.url && (
-                        <img
-                            src={post.preview.images[0].source.url.replace(/&amp;/g, '&')}
-                            alt={post.title}
-                            className="post-thumbnail"
+                    {/* Only show video if it's a Reddit-hosted video */}
+                    {post.media?.reddit_video?.fallback_url ? (
+                        <video
+                            controls
+                            className="post-video"
+                            src={post.media.reddit_video.fallback_url}
+                            aria-label={`Video for post: ${post.title}`}
                         />
+                    ) : (
+                    post.preview?.images?.[0]?.source?.url && (
+                    <img
+                        src={post.preview.images[0].source.url.replace(/&amp;/g, '&')}
+                        alt={post.title}
+                        className="post-thumbnail"
+                    />
+                    )
                     )}
-                    <p>{post.subreddit_name_prefixed}</p>
+                    <div className="post-meta">
+                        <img
+                            src={post.sr_detail?.icon_img || `https://www.redditstatic.com/icon.png`}
+                            alt={post.subreddit}
+                            className="subreddit-avatar"
+                        />
+                        <span>{post.subreddit_name_prefixed}</span>
+                        </div>
                     <a href={`https://www.reddit.com${post.permalink}`} target="_blank" rel="noopener noreferrer">
                         View on Reddit
                     </a>
