@@ -3,12 +3,13 @@ import './TopBar.css'; // Assuming you have a CSS file for styling
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSubreddit } from '../features/subreddit/subredditSlice'; // Assuming you have a subredditSlice defined
+import { setSelectedSubreddit} from '../features/subreddit/subredditSlice'; // Assuming you have a subredditSlice defined
 
 const TopBar = () => {
     const [query, setQuery] = useState('');
     const [isDarkMode, setIsDarkMode] = useState(false); // Placeholder for dark mode toggle
     // This can be expanded to actually toggle dark mode in your app
+    const [inputValue, setInputValue] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const selectedSubreddit = useSelector((state) => state.subreddit.selectedSubreddit);
@@ -37,6 +38,18 @@ const TopBar = () => {
         }
     };
 
+    const handleSubredditChange = (e) => {
+        dispatch(setSelectedSubreddit(e.target.value));
+    };
+
+    const handleInputSubmit = (e) => {
+        e.preventDefault();
+        if (inputValue.trim() !== '') {
+            dispatch(setSelectedSubreddit(inputValue.trim()));
+            setInputValue('');
+        }
+    };
+
     return (
         <header className="topbar">
             <div className="topbar-inner">
@@ -51,11 +64,22 @@ const TopBar = () => {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={handleSearch}
-                />
+                    />
+                    
+                    <form onSubmit={handleInputSubmit} className="subreddit-form">
+                    <input
+                    type="text"
+                    className="subreddit-input"
+                    placeholder="Enter subreddit"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    />
+                    </form>
+
                 <select
                     className="subreddit-select"
                     value={selectedSubreddit}
-                    onChange={(e) => dispatch(setSubreddit(e.target.value))}
+                    onChange={handleSubredditChange}
                 >
                     <option value="popular">r/popular</option>
                     <option value="reactjs">r/reactjs</option>
