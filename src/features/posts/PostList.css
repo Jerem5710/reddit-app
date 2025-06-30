@@ -91,8 +91,54 @@ body.dark .post-list {
     font-size: 1.4rem;
 }
 
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-size: .9rem;
+    opacity: 0.85;
+}
+
+.comment-link,
+.reddit-link {
+    text-decoration: none;
+    color: #646cff;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 0.2s ease;
+}
+
+.comment-link:hover,
+.reddit-link:hover {
+    color: #3d4fe7;
+    text-decoration: underline;
+}
+
+body.dark .comment-link,
+body.dark .reddit-link {
+    color: #9ca3f5;
+}
+
+body.dark .comment-link:hover,
+body.dark .reddit-link:hover {
+    color: #c3caff;
+}
+
+.post-date {
+    font-size: 0.8rem;
+    color: #777;
+    margin-left: 0.5rem;
+    font-style: italic;
+}
+
+body.dark .post-date {
+    color: #aaa;
+}
+
 @media (max-width: 600px) {
     .post-feed {
-        padding-top: 14rem;
+        padding-top: 18rem;
     }
 }

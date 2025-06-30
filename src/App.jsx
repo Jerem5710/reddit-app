@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ROUTES } from './app/routes.js'
 import TopBar from './layout/TopBar'
 import PostList from './features/posts/PostList.jsx'
+import PostDetail from './components/PostDetail.jsx'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <Routes>
         <Route path={ROUTES.home} element={<PostList />} />
         <Route path={ROUTES.search} element={<div>Search Results</div>} />
-        <Route path={ROUTES.postDetail()} element={<div>Post Detail</div>} />
+        <Route path={ROUTES.postDetail()} element={<PostDetail />} />
       </Routes>
       </Router>
     </div>

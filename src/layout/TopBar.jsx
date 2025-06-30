@@ -54,7 +54,7 @@ const TopBar = () => {
         <header className="topbar">
             <div className="topbar-inner">
             <div className="logo-section">
-                <img src="reddit-logo.svg" alt="Reddit Logo" className="reddit-logo" />
+                <img src="/reddit-logo.svg" alt="Reddit Logo" className="reddit-logo" />
                 <h1 className="logo-text">Reddit Client</h1>
             </div>          
             <div className="topbar-controls">

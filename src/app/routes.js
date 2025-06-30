@@ -1,6 +1,6 @@
 export const ROUTES = {
     home: '/',
     search: '/search',
-    postDetail: (id = ':id') => `/post/${id}`, // Post detail route
+    postDetail: () => '/r/:subreddit/comments/:postId', // Dynamic route for post details
 };
 

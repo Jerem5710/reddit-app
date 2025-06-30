@@ -1,0 +1,139 @@
+.post-detail {
+    max-width: 700px;
+    margin: 6rem auto 2rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+
+body.dark .post-detail {
+    border-color: #444;
+}
+
+.comment {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+}
+
+.comment strong {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+body.dark .comment {
+    border-color: #444;
+    background-color: #1f1f1f;
+}
+
+.post-detail h2 {
+    margin-bottom: 0.5rem;
+}
+
+.post-detail p {
+    margin: 0.5rem 0;
+}
+
+.back-link {
+    display: block;
+    margin-bottom: 1rem;
+    color: #646cff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: left;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    background-color: rgba(100, 108, 255, 0.05);/* gentle highlight */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.post-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+    padding: 0 1rem;
+}
+
+.avatar {
+    width: 24px;
+    height: 24px; 
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+body.dark .avatar {
+    border-color: #555;
+}
+
+.comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.meta-line {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+}
+
+.username {
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: 0.1rem;
+}
+
+.timestamp {
+    color: #777;
+    font-style: italic;
+    font-size: 0.75rem;
+}
+
+.username,
+.timestamp {
+    line-height: 1;
+    display: inline-block;
+}
+
+.replies {
+    margin-left: 1rem;
+    border-left: 2px solid #ccc;
+    padding-left: 1rem;
+}
+
+body.dark .replies {
+    border-color: #444;
+}
+
+@media (max-width: 600px) {
+    .post-wrapper {
+        margin-top: 9rem;
+    }
+
+    .back-link {
+        font-size: 1rem;
+        padding-left: 1rem;
+    }
+
+    .post-detail {
+        margin-top: 9rem;
+    }
+}
+
+body.dark .back-link {
+    color: #9ca3f5; }
+

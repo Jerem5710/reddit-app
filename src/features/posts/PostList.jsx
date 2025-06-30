@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from './postsSlice';
 import './PostList.css'; // Assuming you have a CSS file for styling
+import { Link } from 'react-router-dom';
 
 const PostList = () => {
     const dispatch = useDispatch();
@@ -56,10 +57,31 @@ const PostList = () => {
                             className="subreddit-avatar"
                         />
                         <span>{post.subreddit_name_prefixed}</span>
-                        </div>
-                    <a href={`https://www.reddit.com${post.permalink}`} target="_blank" rel="noopener noreferrer">
-                        View on Reddit
-                    </a>
+                            </div>
+                        <div className="post-actions">
+                                <a
+                                    href={`https://www.reddit.com${post.permalink}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="reddit-link"
+                                >
+                            View on Reddit ↗
+
+                                </a>
+                                
+                        <span className="post-date">
+                                    {new Date(post.created_utc * 1000).toLocaleString()}
+                                </span>
+
+                                <Link
+                                    to={`/r/${post.subreddit}/comments/${post.id}`}
+                                    className="comment-link"
+                                    title="View comments"
+                                >
+                                    💬 {post.num_comments}
+                                </Link>
+
+                            </div>
                         </div>
                         {/*Themed divider between posts*/}
                         <hr className="post-divider" />
