@@ -1,10 +1,35 @@
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #646cff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: left;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.back-link:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+body.dark .back-link {
+    color: #9ca3f5;
+    border-color: #555;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
 .post-detail {
     max-width: 700px;
-    margin: 6rem auto 2rem;
+    margin: 2rem auto 2rem;
     padding: 1rem;
     box-sizing: border-box;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    overflow-x: hidden;
+    /*border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;*/
 }
 
 body.dark .post-detail {
@@ -17,6 +42,8 @@ body.dark .post-detail {
     border: 1px solid #ccc;
     border-radius: 6px;
     background-color: #f9f9f9;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .comment strong {
@@ -38,23 +65,6 @@ body.dark .comment {
     margin: 0.5rem 0;
 }
 
-.back-link {
-    display: block;
-    margin-bottom: 1rem;
-    color: #646cff;
-    text-decoration: none;
-    font-size: 0.9rem;
-    text-align: left;
-    padding: 0.5rem 0 0.5rem 0.5rem;
-    background-color: rgba(100, 108, 255, 0.05);/* gentle highlight */
-    border: 1px solid #ccc;
-    border-radius: 6px;
-}
-
-.back-link:hover {
-    text-decoration: underline;
-}
-
 .post-wrapper {
     display: flex;
     justify-content: center;
@@ -64,7 +74,7 @@ body.dark .comment {
 
 .avatar {
     width: 24px;
-    height: 24px; 
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid #ccc;
@@ -113,6 +123,10 @@ body.dark .avatar {
     margin-left: 1rem;
     border-left: 2px solid #ccc;
     padding-left: 1rem;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 body.dark .replies {
@@ -124,16 +138,73 @@ body.dark .replies {
         margin-top: 9rem;
     }
 
-    .back-link {
-        font-size: 1rem;
-        padding-left: 1rem;
-    }
-
     .post-detail {
-        margin-top: 9rem;
+        margin-top: 1rem;
     }
-}
 
-body.dark .back-link {
-    color: #9ca3f5; }
+    .back-link {
+        font-size: 0.8rem;
+    }
+
+    .post-detail h2 {
+        margin-bottom: 0.5rem;  
+        font-size: 0.85rem;
+    
+    }
+
+    .post-detail p {
+        margin: 0.5rem 0;
+        font-size: 0.85rem;
+    }
+
+    .comment {
+        font-size: 0.85rem;
+    }
+
+    .post-detail h3 {
+        font-size: 0.85rem;
+    }
+
+    .topbar-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem 1rem;
+    }
+    
+    .logo-section,
+    .topbar-controls {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .topbar-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .topbar-controls input,
+    .topbar-controls select {
+        width: 100%;
+        padding-right: 1rem;
+        box-sizing: border-box;
+        
+    }
+    
+    .topbar-controls>* {
+        width: 100%;
+    }
+    
+    .dark-toggle {
+        width: auto;
+        align-self: center;
+        text-align: center;
+    }
+
+    .replies {
+        margin-left: 0.25rem;
+        padding-left: 0.25rem;
+        font-size: 0.7rem;
+        border-left: 0px solid #ccc;   }
+}
 

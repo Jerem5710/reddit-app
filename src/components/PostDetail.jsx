@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Comment from './Comment'; // Assuming you have a Comment component to render individual comments
+import './PostDetail.css'; // Assuming you have a CSS file for styling the post detail view
 
 const PostDetail = () => {
     const {subreddit, postId} = useParams();

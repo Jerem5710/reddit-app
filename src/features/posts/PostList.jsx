@@ -28,7 +28,7 @@ const PostList = () => {
     return (
         <div className="post-feed">
             <div className="post-list">
-                <h2 className="subreddit-title">Posts from r/{selectedSubreddit}</h2>
+                <h2 className="subreddit-title" title="Posts from subreddit">Posts from r/{selectedSubreddit}</h2>
                 {posts.map((post) => (
                 <React.Fragment key={post.id}>
                 <div className="post-card">
@@ -64,12 +64,19 @@ const PostList = () => {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="reddit-link"
+                                    title="View on Reddit"
                                 >
                             View on Reddit ↗
 
                                 </a>
+
+                        <div className="vote-controls">
+                                <button className="vote-button upvote" aria-label="Upvote this post" title="Upvote this post">▲</button>        
+                                <span className="post-score">{post.score}</span>
+                                <button className="vote-button downvote" aria-label="Downvote this post" title="Downvote this post">▼</button>
+                        </div>
                                 
-                        <span className="post-date">
+                        <span className="post-date" title="Posted on">
                                     {new Date(post.created_utc * 1000).toLocaleString()}
                                 </span>
 
@@ -78,7 +85,12 @@ const PostList = () => {
                                     className="comment-link"
                                     title="View comments"
                                 >
-                                    💬 {post.num_comments}
+                                    <img 
+                                        src="/comment-bubble.png"
+                                        alt="Comments"
+                                        className="comment-icon"
+                                    />
+                                    {post.num_comments}
                                 </Link>
 
                             </div>

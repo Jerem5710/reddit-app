@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="app-wrapper">
     <Router>
-      <TopBar />
+        <TopBar />
       <Routes>
         <Route path={ROUTES.home} element={<PostList />} />
         <Route path={ROUTES.search} element={<div>Search Results</div>} />

@@ -1,9 +1,9 @@
 import React from 'react';
 import './TopBar.css'; // Assuming you have a CSS file for styling
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedSubreddit} from '../features/subreddit/subredditSlice'; // Assuming you have a subredditSlice defined
+import { setSelectedSubreddit } from '../features/subreddit/subredditSlice'; // Assuming you have a subredditSlice defined
 
 const TopBar = () => {
     const [query, setQuery] = useState('');
@@ -13,12 +13,18 @@ const TopBar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const selectedSubreddit = useSelector((state) => state.subreddit.selectedSubreddit);
+    //const location = useLocation();
 
     // Debugging effect to log the selected subreddit
     // This can be useful to see if the subreddit changes correctly
     useEffect(() => {
         console.log('Selected subreddit (from Redux):', selectedSubreddit);
     }, [selectedSubreddit]);
+    
+    /*useEffect(() => {
+        // Force reflow when route changes
+        window.dispatchEvent(new Event('resize'));
+    }, [location.pathname]);*/
 
     useEffect(() => {
         // This effect can be used to apply dark mode styles globally
@@ -29,7 +35,7 @@ const TopBar = () => {
             body.classList.remove('dark');
         }
     }, [isDarkMode]);
-
+    
     const handleSearch = (e) => {
         e.preventDefault();
         if (e.key === 'Enter' && query.trim() !== '') {

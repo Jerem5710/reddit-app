@@ -1,4 +1,10 @@
 /* src/layout/TopBar.css */
+/**,
+*::before,
+*::after {
+    box-sizing: border-box;
+}*/
+
 .topbar {
     display: flex;
     justify-content: space-between;
@@ -10,6 +16,7 @@
     background-color: #ffffff;/* Light mode default */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #ddd;
+    overflow-x: clip; 
 }
 
 .topbar-inner {
@@ -22,6 +29,8 @@
     padding: 0 1rem;
     flex-wrap: wrap;
     gap: 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .topbar-controls {
@@ -41,6 +50,14 @@
 body.dark .topbar .logo {
     color: #f0f0f0; /* dark mode text color */
     
+}
+
+.topbar-controls input,
+.topbar-controls select {
+    padding-right: 1rem;
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .topbar-controls input,
@@ -124,7 +141,7 @@ body.dark .subreddit-input {
     .topbar-inner {
         flex-direction: column;
         align-items: stretch;
-        padding: 1rem;
+        padding: 1rem 1rem;
     }
 
     .logo-section,
@@ -144,6 +161,8 @@ body.dark .subreddit-input {
         width: 100%;
         padding-right: 1rem;
         box-sizing: border-box;
+        max-width: 100%;
+        min-width: 0;
     }
 
     .topbar-controls>* {
