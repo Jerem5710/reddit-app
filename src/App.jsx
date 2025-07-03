@@ -7,6 +7,7 @@ import { ROUTES } from './app/routes.js'
 import TopBar from './layout/TopBar'
 import PostList from './features/posts/PostList.jsx'
 import PostDetail from './components/PostDetail.jsx'
+import SearchResults from './features/searchResults/SearchResults.jsx'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <TopBar />
       <Routes>
         <Route path={ROUTES.home} element={<PostList />} />
-        <Route path={ROUTES.search} element={<div>Search Results</div>} />
+        <Route path={ROUTES.search} element={<SearchResults />} />
         <Route path={ROUTES.postDetail()} element={<PostDetail />} />
       </Routes>
       </Router>

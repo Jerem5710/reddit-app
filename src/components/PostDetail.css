@@ -57,6 +57,84 @@ body.dark .comment {
     background-color: #1f1f1f;
 }
 
+.comment-loading {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: #f3f3f3;
+}
+
+.skeleton-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ddd;
+}
+
+.skeleton-lines .line {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.line.short {
+    width: 50%;
+}
+
+.line.long {
+    width: 80%;
+}
+
+body.dark .comment-loading {
+    background-color: #1f1f1f;
+}
+
+body.dark .skeleton-avatar,
+body.dark .line {
+    background-color: #333;
+}
+
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px; /* Prevents vertical collapse */
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+.spinner {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border: 4px solid #ccc;
+    border-top-color: #646cff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body.dark .loading-state {
+    color: #aaa;
+}
+
+body.dark .spinner {
+    border: 3px solid #444;
+    border-top-color: #9ca3f5;
+}
+
 .post-detail h2 {
     margin-bottom: 0.5rem;
 }
@@ -161,14 +239,28 @@ body.dark .replies {
         font-size: 0.85rem;
     }
 
+    .avatar {
+        width: 20px;
+        height: 20px;
+    }
+
     .post-detail h3 {
         font-size: 0.85rem;
+    }
+
+    .post-detail-wrapper .topbar-inner {
+        margin-right: 1rem; /* or whatever fixes layout for this page */
+        padding-right: 1rem;
+        padding-left: 1rem;
+        box-sizing: border-box;
+        overflow-x: hidden;
     }
 
     .topbar-inner {
         flex-direction: column;
         align-items: stretch;
         padding: 1rem 1rem;
+        margin-right: 0rem; /*This is what I have noticed fixes the topbar for the comments page, but affects the topbar on every other page when adjusted*/
     }
     
     .logo-section,
@@ -202,9 +294,11 @@ body.dark .replies {
     }
 
     .replies {
-        margin-left: 0.25rem;
+        margin-left: 0rem;
         padding-left: 0.25rem;
         font-size: 0.7rem;
-        border-left: 0px solid #ccc;   }
+        border-left: 0px solid #ccc;   
+        box-sizing: border-box;
+    }
 }
 

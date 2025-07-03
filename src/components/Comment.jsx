@@ -1,7 +1,18 @@
 import React from 'react';
 
 const Comment = ({ comment }) => {
-    if (!comment || comment.kind !== 't1') return null; // Ensure we only render valid comments
+    //if (!comment || comment.kind !== 't1') return null; // Ensure we only render valid comments
+    if (!comment || !comment.data) {
+        return (
+            <div className="comment-loading">
+                <div className="skeleton-avatar" />
+                <div className="skeleton-lines">
+                    <div className="line short" />
+                    <div className="line long" />
+                </div>    
+            </div>
+        )
+    }
 
     const data = comment.data;
     const replies = data.replies?.data?.children;

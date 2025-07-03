@@ -228,12 +228,13 @@ body.dark .reddit-link:hover {
     transition: filter 0.2s ease;
 }
 
+
 .comment-link:hover .comment-icon {
     filter: brightness(0.2);
 }
 
 body.dark .comment-icon {
-    filter: brightness(1.2);
+    filter: invert(0.8);
 }
 
 .post-date {
@@ -275,19 +276,20 @@ body.dark .post-date {
     .back-link,
     .comment-meta,
     .post-meta {
-        font-size: 0.8rem;
+        font-size: 0.7rem;
     }
     
     .vote-controls,
     .comment-link,
     .reddit-link,
     .post-date {
-        padding: 0.25rem 0.5rem;
+        padding: 0.25rem 0.25rem;
         border-radius: 12px;
  }
     
     .vote-button {
         font-size: 0.75rem;
+        padding: 0.15rem 0.3rem;
     }
 }
 

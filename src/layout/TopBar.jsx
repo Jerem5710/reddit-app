@@ -10,9 +10,11 @@ const TopBar = () => {
     const [isDarkMode, setIsDarkMode] = useState(false); // Placeholder for dark mode toggle
     // This can be expanded to actually toggle dark mode in your app
     const [inputValue, setInputValue] = useState('');
+    const [isSearching, setIsSearching] = useState(false); // Placeholder for search state
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const selectedSubreddit = useSelector((state) => state.subreddit.selectedSubreddit);
+    const [searchTerm, setSearchTerm] = useState('');
     //const location = useLocation();
 
     // Debugging effect to log the selected subreddit
@@ -36,13 +38,13 @@ const TopBar = () => {
         }
     }, [isDarkMode]);
     
-    const handleSearch = (e) => {
+    /*const handleSearch = (e) => {
         e.preventDefault();
         if (e.key === 'Enter' && query.trim() !== '') {
             navigate(`/search?q=${encodeURIComponent(query.trim())}`)
             setQuery(''); // Clear the input after search
         }
-    };
+    };*/
 
     const handleSubredditChange = (e) => {
         dispatch(setSelectedSubreddit(e.target.value));
@@ -56,6 +58,15 @@ const TopBar = () => {
         }
     };
 
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        if (searchTerm.trim()) {
+            setIsSearching(true); //trigger loading state
+            navigate(`/search?q=${encodeURIComponent(searchTerm.trim())}`);
+            setTimeout(() => setIsSearching(false), 2000) // Simulate fetch delay
+        }
+    };
+      
     return (
         <header className="topbar">
             <div className="topbar-inner">
@@ -63,14 +74,21 @@ const TopBar = () => {
                 <img src="/reddit-logo.svg" alt="Reddit Logo" className="reddit-logo" />
                 <h1 className="logo-text">Reddit Client</h1>
             </div>          
-            <div className="topbar-controls">
-                <input type="text"
-                    placeholder="Search..."
-                    className="search-input"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    onKeyDown={handleSearch}
+                <div className="topbar-controls">
+
+                <form onSubmit={handleSearchSubmit} className="search-container">   
+                    <input
+                        type="text"
+                        placeholder="Search subreddit..."
+                        className="search-input"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        aria-label="search subreddit"
                     />
+                        <button type="submit" className="search-button" aria-label="search">
+                            <img src="/search-icon.png" alt="Search Icon" className="search-icon" />
+                        </button>
+                </form>
                     
                     <form onSubmit={handleInputSubmit} className="subreddit-form">
                     <input
@@ -97,7 +115,15 @@ const TopBar = () => {
                     className="dark-toggle"
                     onClick={() => setIsDarkMode((prev) => !prev)}
                 >
-                    {isDarkMode ? '🌞' : '🌙'}
+                        <img
+                            src={isDarkMode ? '/sun-icon.png' : '/moon-icon.png'}
+                            alt={isDarkMode ? 'Light mode' : 'Dark mode'}
+                            className="toggle-icon"
+                        />
+                        <span className="sr-only">
+                            {isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                        </span>
+
                 </button>
                 </div>
             </div>

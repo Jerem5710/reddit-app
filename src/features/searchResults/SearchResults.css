@@ -1,0 +1,163 @@
+.search-results-wrapper {
+    max-width: 800px;
+    margin: 6rem auto 2rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.search-heading {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+}
+
+.loading-state,
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+.spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #ccc;
+    border-top-color: #646cff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+body.dark .loading-state,
+body.dark .empty-state {
+    color: #aaa;
+}
+
+body.dark .spinner {
+    border: 3px solid #444;
+    border-top-color: #9ca3f5;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #646cff;
+    text-decoration: none;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+    margin-top: 1rem;
+}
+
+.back-link:hover {
+    opacity: 0.85;
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+body.dark .back-link {
+    border-color: #555;
+    color: #9ca3f5;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 600px) {
+    .topbar-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem 1rem;
+    }
+
+    .logo-section,
+    .topbar-controls {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .topbar-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+
+    .topbar-controls input,
+    .topbar-controls select {
+        width: 100%;
+        padding-right: 1rem;
+        box-sizing: border-box;
+        max-width: 100%;
+        min-width: 0;
+    }
+
+    .topbar-controls>* {
+        width: 100%;
+    }
+
+    .dark-toggle {
+        width: auto;
+        align-self: center;
+        text-align: center;
+    }
+
+    .search-heading {
+        text-align: center;
+        font-size: 1.4rem;
+        margin-bottom: 2rem; 
+        padding-left: 1rem; 
+        padding-right: 1rem; 
+    }
+
+    .search-results-wrapper {
+        padding-top: 18rem; /* Matches mobile TopBar height */
+        margin-top: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    .post-list,
+    .post-card,
+    .post-actions,
+    .post-thumbnail,
+    .post-video {
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+    
+    .search-heading,
+    .post-date,
+    .comment-link,
+    .reddit-link,
+    .post-score,
+    .vote-button,
+    .back-link,
+    .comment-meta,
+    .post-meta {
+        font-size: 0.7rem;
+    }
+    
+    .vote-controls,
+    .comment-link,
+    .reddit-link,
+    .post-date {
+        padding: 0.25rem 0.25rem;
+        border-radius: 12px;
+    }
+    
+    .vote-button {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.3rem;
+    }
+}
