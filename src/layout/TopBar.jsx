@@ -15,6 +15,7 @@ const TopBar = () => {
     const dispatch = useDispatch();
     const selectedSubreddit = useSelector((state) => state.subreddit.selectedSubreddit);
     const [searchTerm, setSearchTerm] = useState('');
+    const [showDropdown, setShowDropdown] = useState(false);
     //const location = useLocation();
 
     // Debugging effect to log the selected subreddit
@@ -90,27 +91,45 @@ const TopBar = () => {
                         </button>
                 </form>
                     
-                    <form onSubmit={handleInputSubmit} className="subreddit-form">
-                    <input
-                    type="text"
-                    className="subreddit-input"
-                    placeholder="Enter subreddit"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    />
+                    <form onSubmit={handleInputSubmit} className="subreddit-container">
+                        <input
+                            type="text"
+                            className="subreddit-input"
+                            placeholder="Enter subreddit"
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                            aria-label="Enter subreddit"
+                        />
+                        <button type="submit" className="subreddit-button" aria-label="submit subreddit">
+                            <img src="/search-icon.png" alt="Search Icon" className="search-icon" />
+                        </button>
                     </form>
 
-                <select
-                    className="subreddit-select"
-                    value={selectedSubreddit}
-                    onChange={handleSubredditChange}
-                >
-                    <option value="popular">r/popular</option>
-                    <option value="reactjs">r/reactjs</option>
-                    <option value="webdev">r/webdev</option>
-                    <option value="learnprogramming">r/learnprogramming</option>
-                    {/* More can be added later */}
-                </select>
+
+                    <div className="custom-dropdown">
+                        <button className="dropdown-toggle" onClick={() => setShowDropdown((prev) => !prev)}>
+                            {selectedSubreddit ? `r/${selectedSubreddit}` : 'Select Subreddit'}
+                            <img src="/custom-arrow.png" alt="Toggle" className="arrow-icon" />
+                        </button>
+
+                        {showDropdown && (
+                            <ul className="dropdown-menu">
+                                {['popular', 'reactjs', 'webdev', 'learnprogramming'].map((sub) => (
+                                    <li
+                                        key={sub}
+                                        onClick={() => {
+                                            dispatch(setSelectedSubreddit(sub));
+                                            setShowDropdown(false);
+                                        }}
+                                        className={`dropdown-item ${selectedSubreddit === sub ? 'active' : ''}`}
+                                    >
+                                        r/{sub}
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+
                 <button
                     className="dark-toggle"
                     onClick={() => setIsDarkMode((prev) => !prev)}

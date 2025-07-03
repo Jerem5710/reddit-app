@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Comment from './Comment'; // Assuming you have a Comment component to render individual comments
 import './PostDetail.css'; // Assuming you have a CSS file for styling the post detail view
-import TopBar from '../layout/TopBar';
+//import TopBar from '../layout/TopBar';
 
 const PostDetail = () => {
     useEffect(() => {
@@ -56,7 +56,7 @@ const PostDetail = () => {
 
     return (
         <div className="post-detail-wrapper">
-            <TopBar />
+            
         <div className="post-feed">
         <div className="post-list">
         <div className="post-detail">
