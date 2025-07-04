@@ -17,7 +17,7 @@ function App() {
       <Routes>
         <Route path={ROUTES.home} element={<PostList />} />
         <Route path={ROUTES.search} element={<SearchResults />} />
-        <Route path={ROUTES.postDetail()} element={<PostDetail />} />
+          <Route path={ROUTES.postDetail()} element={<PostDetail />} />
       </Routes>
       </Router>
     </div>
@@ -25,3 +25,5 @@ function App() {
 }
 
 export default App
+
+// <Route path="/r/:subreddit" element={<PostList />} /> this was removed while reverting back to original layout to figure out the navigating issue

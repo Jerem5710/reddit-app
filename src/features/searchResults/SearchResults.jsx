@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'; // Assuming you might need to access Redux state
 import './SearchResults.css'; // Assuming you have a CSS file for styling
 import PostCard from '../posts/PostCard.jsx'; // Importing PostCard component for individual post rendering
@@ -11,6 +11,10 @@ const SearchResults = () => {
     const allPosts = useSelector((state) => state.posts.posts); // Assuming posts are stored in Redux
     const [filteredPosts, setFilteredPosts] = useState([]);
     const [loading, setLoading] = useState(true);
+    //const { subreddit: currentSubredditParam } = useParams();
+
+    //const selectedSubreddit = useSelector((state) => state.subreddit.selectedSubreddit);
+    //const navigate = useNavigate()    
 
     useEffect(() => {
         if (!query || !allPosts.length) return;
@@ -24,6 +28,22 @@ const SearchResults = () => {
             setLoading(false);
         }, 800); // Slight delay to simulate loading state
     }, [query, allPosts]);
+
+    /*useEffect(() => {
+        const isOnSearch = location.pathname.startsWith('/search');
+        const isOnPost = location.pathname.startsWith('/comments/');
+        const isOnCorrectSubreddit = location.pathname === `/r/${selectedSubreddit}`;
+
+        if (
+            selectedSubreddit &&
+            !isOnCorrectSubreddit &&
+            (isOnSearch || isOnPost)
+        ) {
+            navigate(`/r/${selectedSubreddit}`);
+        }
+    }, [selectedSubreddit, location.pathname, navigate]);*/
+      
+      
 
     return (
         

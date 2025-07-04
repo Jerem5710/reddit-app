@@ -135,6 +135,14 @@ body.dark .spinner {
     border-top-color: #9ca3f5;
 }
 
+.loading-text {
+    color: #222; /* default light mode */
+}
+
+body.dark .loading-text {
+    color: #f0f0f0; /* light text for dark mode */
+}
+
 .post-detail h2 {
     margin-bottom: 0.5rem;
 }

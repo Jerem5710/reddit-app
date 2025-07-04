@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import Comment from './Comment'; // Assuming you have a Comment component to render individual comments
 import './PostDetail.css'; // Assuming you have a CSS file for styling the post detail view
 //import TopBar from '../layout/TopBar';
@@ -14,6 +15,11 @@ const PostDetail = () => {
     const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [loadingComments, setLoadingComments] = useState(true)
+    //const { subreddit: currentSubredditParam } = useParams();
+
+    //const selectedSubreddit = useSelector((state) => state.subreddit.selectedSubreddit);
+    //const navigate = useNavigate();
+    //const location = useLocation();
 
     console.log('Comments loading?', loadingComments);
     console.log('Comments array length:', comments.length);
@@ -49,7 +55,21 @@ const PostDetail = () => {
                     setLoadingComments(false);
                 });
         }, 800); // delay to help spinner render
-    }, [post]);     
+    }, [post]);   
+    
+    /*useEffect(() => {
+        const isOnSearch = location.pathname.startsWith('/search');
+        const isOnPost = location.pathname.startsWith('/comments/');
+        const isOnCorrectSubreddit = location.pathname === `/r/${selectedSubreddit}`;
+
+        if (
+            selectedSubreddit &&
+            !isOnCorrectSubreddit &&
+            (isOnSearch || isOnPost)
+        ) {
+            navigate(`/r/${selectedSubreddit}`);
+        }
+    }, [selectedSubreddit, location.pathname, navigate]);*/         
 
     if (loading) return <p>Loading post and comments ...</p>
     if (!post) return <p>Post not found or failed to load.</p>;
@@ -68,7 +88,7 @@ const PostDetail = () => {
                         {loadingComments || comments.length === 0 ? (
                             <div className="loading-state">
                                 <span className="spinner" />
-                                <p style={{ color: 'black' }}>Loading comments...</p> {/* Temp: make visible */}
+                                <p className="loading-text">Loading comments...</p> {/* Temp: make visible */}
 
                             </div>    
                  ) : (     

@@ -56,6 +56,7 @@ const TopBar = () => {
         if (inputValue.trim() !== '') {
             dispatch(setSelectedSubreddit(inputValue.trim()));
             setInputValue('');
+            navigate('/');
         }
     };
 
@@ -120,6 +121,7 @@ const TopBar = () => {
                                         onClick={() => {
                                             dispatch(setSelectedSubreddit(sub));
                                             setShowDropdown(false);
+                                            navigate('/'); // this ensures you land on the feed
                                         }}
                                         className={`dropdown-item ${selectedSubreddit === sub ? 'active' : ''}`}
                                     >
