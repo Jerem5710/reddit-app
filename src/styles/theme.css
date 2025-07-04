@@ -1,0 +1,30 @@
+body {
+    background-color: #ffffff;
+    color: #222;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark .post-card{
+    background-color: #1f1f1f;
+}
+
+body.dark .post-card h3,
+body.dark .post-card p,
+body.dark .post-card a {
+    color: #f0f0f0;
+}
+
+body.dark {
+    color: #f0f0f0;
+    background-color: #141414;
+}
+
+body.dark .topbar {
+    background-color: #1f1f1f; /* Dark mode background */
+}
+
+body.dark .post-card {
+    background-color: #1f1f1f;
+    color: #f0f0f0;
+    border: 1px solid #333;
+}

@@ -1,35 +1,29 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
+//import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ROUTES } from './app/routes.js'
+import TopBar from './layout/TopBar'
+import PostList from './features/posts/PostList.jsx'
+import PostDetail from './components/PostDetail.jsx'
+import SearchResults from './features/searchResults/SearchResults.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app-wrapper">
+    <Router>
+        <TopBar />
+      <Routes>
+        <Route path={ROUTES.home} element={<PostList />} />
+        <Route path={ROUTES.search} element={<SearchResults />} />
+          <Route path={ROUTES.postDetail()} element={<PostDetail />} />
+      </Routes>
+      </Router>
+    </div>
   )
 }
 
 export default App
+
+// <Route path="/r/:subreddit" element={<PostList />} /> this was removed while reverting back to original layout to figure out the navigating issue
