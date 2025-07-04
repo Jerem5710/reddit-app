@@ -43,8 +43,6 @@ const SearchResults = () => {
         }
     }, [selectedSubreddit, location.pathname, navigate]);*/
       
-      
-
     return (
         
         <div className="search-results-wrapper">
