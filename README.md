@@ -35,6 +35,15 @@ Live user flows tested:
 
 ## 🛠 Getting Started
 
+You can explore the deployed app here:
+**🔗 [Reddit Client on Netlify](https://reddit-client-jerry.netlify.app)**
+
+## 📸 Preview
+
+![Reddit Client Preview](./reddit-client-preview.png)
+
+---
+
 Install dependencies:
 
 ```bash
